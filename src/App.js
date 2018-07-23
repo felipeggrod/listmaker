@@ -37,7 +37,7 @@ class App extends Component {
         </p>
         <input onChange ={this.onChangeItemList}></input>
       
-        
+        <ItemList />
 
       </div>
     );
