@@ -25,7 +25,20 @@ const allStoreEnhancers = compose (
 
 const store = createStore(
     allReducers, {
-        root: ''
+        root: '',
+        itemList: {
+            "item1":"John",
+            "item2": {
+                "car1":{
+                    "sub1":"SUB1",
+                    "sub2":"SUB2",
+                    "sub3":"SYB3",
+                },
+                "car2":"BMW",
+                "car3":"Fiat"
+            },
+            "item3":30
+        }
     },
     allStoreEnhancers
 );
