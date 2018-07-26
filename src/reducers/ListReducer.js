@@ -13,10 +13,7 @@ export function listReducer (state = {}, action) {
         state = {...state, name: action.payload}
     }
     if (action.type === "ITEM_CHANGE") {
-        //var obj = state;
-        var obj = Object.assign({}, state);
-
-        console.log(action.payload.item);
+        var obj = JSON.parse(JSON.stringify(state));
 
         function recursiveSearch(obj, id)
         {
@@ -38,8 +35,7 @@ export function listReducer (state = {}, action) {
         }
         recursiveSearch(obj, action.payload.id);
         
-        //state = Object.assign({}, state, obj);
-        
+        state = obj;
        
     }
     
