@@ -36,9 +36,11 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <input onChange ={this.onChangeItem}></input>
-      
-        <List data = {this.props.list}/>
-
+        
+          <div className="col-2 text-left">
+            <List data = {this.props.list}/>
+          </div>
+        
       </div>
     );
   }
