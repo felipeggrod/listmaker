@@ -1,7 +1,7 @@
 import React from 'react';
 import ContentEditable from 'react-contenteditable'
 import {connect} from 'react-redux';
-import ChangeItem from '../actions/ListActions';
+import {ChangeItem} from '../actions/ListActions';
 
 class Item extends React.Component {
     constructor() {

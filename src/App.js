@@ -9,7 +9,7 @@ import './App.css';
 //generate container components with connect() instead of store.subscribe(), to use optmizations made for react-redux 
 //Connects a React component to a Redux store.
 import {connect} from 'react-redux';
-import ChangeItem from './actions/ListActions';
+import {ChangeItem} from './actions/ListActions';
 import List from './components/List';
 
 
