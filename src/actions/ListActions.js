@@ -17,3 +17,13 @@ export function AddItem (id, newItem) {
         }
     }
 }
+
+export function DeleteItem (id, newItem) {
+    return {
+        type: "ITEM_DELETE",
+        payload: {
+            item: newItem,
+            id: id
+        }
+    }
+}

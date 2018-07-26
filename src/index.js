@@ -27,7 +27,7 @@ const store = createStore(
     allReducers, {
         root: '',
         list: [{
-            "id": 1,
+            "id": 0,
             "name": "Descr",
             "items": [
                 {
@@ -44,8 +44,11 @@ const store = createStore(
                 "id": 3,
                 "name": "Sub Descr"
                 }
-            ]
-        }]
+            ]},{
+                "id": 6,
+                "name": "Descre"
+            }
+        ]
     },
     allStoreEnhancers
 );
