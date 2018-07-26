@@ -2,38 +2,56 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 
-var itemListArray = [];
 
-function RunList(obj, path)
-{
-    var txt = '';
-    for (var key in obj)
-    {
-        if (obj.hasOwnProperty(key))
-        {
-            if ('object' === typeof(obj[key]))
-            {
-                //txt += RunList(obj[key], path + (path ? '.' : '') + key);
-                itemListArray.push(<div>AAA</div>);
-                console.log('if: '+obj[key]);
-                RunList(obj[key], '');
-            } 
-            else
-            {
-                console.log('else: '+obj[key]);
-                //txt += path + '.' + key + '\t' + obj[key] + '\n';
-            }
-        }
+class Item extends React.Component {
+	render() {
+  	return <li>
+      	{ this.props.name }
+        { this.props.children }
+    </li>
+  }
+}
+
+class List extends React.Component {
+	constructor() {
+  	super();
+  }
+  
+  list(data) {
+  	const children = (items) => {
+    	if (items) {
+      	return <ul>{ this.list(items) }</ul>
+      }
     }
-    return txt;
+    
+    return data.map((node, index) => {
+      return <Item key={ node.id } name={ node.name }>
+        { children(node.items) }
+      </Item>
+    })
+  }
+  
+  render() {
+  	return <ul>
+    	{ this.list(this.props.data) }
+    </ul>
+  }
 }
 
 
+
+
+
+
+
 const ItemList = (props) => {
-    console.log(RunList(props.itemList, ''));
-    console.log(this.itemListArray);
+    
+    console.log(props.itemList);
     return (
-        <div> a:{this.itemListArray} </div>
+        <div> a:
+            <List data={props.itemList}/>
+        </div>
+        
     );
 }
 
