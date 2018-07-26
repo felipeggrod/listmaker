@@ -1,18 +1,18 @@
 import React from 'react';
 import ContentEditable from 'react-contenteditable'
 import {connect} from 'react-redux';
-import ChangeList from '../actions/ListActions';
+import ChangeItem from '../actions/ListActions';
 
 class Item extends React.Component {
     constructor() {
         super()
-        this.onChangeList = this.onChangeList.bind(this);
+        this.onChangeItem = this.onChangeItem.bind(this);
     };
     
     
-    onChangeList = (id, e) => {
+    onChangeItem = (id, e) => {
         
-        this.props.onChangeList(id, e.target.value);
+        this.props.onChangeItem(id, e.target.value);
         //console.log(e.target.value + '  ' + this.props.id);
     };
 
@@ -21,7 +21,7 @@ class Item extends React.Component {
             <ContentEditable
                 html= { this.props.name } // innerHTML of the editable div
                 disabled={false}       // use true to disable edition
-                onChange={(e) => this.onChangeList(this.props.id , e)} // handle innerHTML change
+                onChange={(e) => this.onChangeItem(this.props.id , e)} // handle innerHTML change
             />      
             { this.props.children }
         </div>
@@ -29,7 +29,7 @@ class Item extends React.Component {
 }
 
 const mapActionsToProps = {
-    onChangeList: ChangeList
+    onChangeItem: ChangeItem
 };
 
 

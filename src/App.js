@@ -9,7 +9,7 @@ import './App.css';
 //generate container components with connect() instead of store.subscribe(), to use optmizations made for react-redux 
 //Connects a React component to a Redux store.
 import {connect} from 'react-redux';
-import ChangeList from './actions/ListActions';
+import ChangeItem from './actions/ListActions';
 import List from './components/List';
 
 
@@ -17,11 +17,11 @@ class App extends Component {
   constructor(props){
     super(props);
 
-    this.onChangeList = this.onChangeList.bind(this);
+    this.onChangeItem = this.onChangeItem.bind(this);
   }
 
-  onChangeList(event) {
-    this.props.onChangeList(event.target.value);
+  onChangeItem(event) {
+    this.props.onChangeItem(event.target.value);
   }
 
   render() {
@@ -35,7 +35,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <input onChange ={this.onChangeList}></input>
+        <input onChange ={this.onChangeItem}></input>
       
         <List data = {this.props.list}/>
 
@@ -55,7 +55,7 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapActionsToProps = {
-    onChangeList: ChangeList
+    onChangeItem: ChangeItem
 };
 
 

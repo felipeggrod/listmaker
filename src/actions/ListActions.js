@@ -1,6 +1,6 @@
-export default function ChangeList (id, newItem) {
+export default function ChangeItem (id, newItem) {
     return {
-        type: "LIST_CHANGE",
+        type: "ITEM_CHANGE",
         payload: {
             item: newItem,
             id: id
