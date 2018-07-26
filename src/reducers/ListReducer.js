@@ -16,7 +16,14 @@ export function listReducer (state = {}, action) {
         /*state = Object.assign({}, state, {
             list: '1'//action.payload
         })*/
+        //var obj = state;
+
+        
+        
+        
+       
     }
     
     return state;
 }
+

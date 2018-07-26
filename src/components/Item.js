@@ -10,10 +10,10 @@ class Item extends React.Component {
     };
     
     
-    onChangeList = e => {
+    onChangeList = (id, e) => {
         
-        this.props.onChangeList(e.target.value);
-        console.log(e.target.value + '  ' + this.props.id);
+        this.props.onChangeList(id, e.target.value);
+        //console.log(e.target.value + '  ' + this.props.id);
     };
 
     render() {
@@ -21,7 +21,7 @@ class Item extends React.Component {
             <ContentEditable
                 html= { this.props.name } // innerHTML of the editable div
                 disabled={false}       // use true to disable edition
-                onChange={this.onChangeList} // handle innerHTML change
+                onChange={(e) => this.onChangeList(this.props.id , e)} // handle innerHTML change
             />      
             { this.props.children }
         </div>
@@ -35,4 +35,5 @@ const mapActionsToProps = {
 
 
 export default connect(undefined, mapActionsToProps)(Item);
+
 

@@ -1,12 +1,12 @@
 import React from 'react';
-import {connect} from 'react-redux';
+//import {connect} from 'react-redux';
 import Item from './Item';
 
 
 class List extends React.Component {
-	constructor() {
-  	super();
-  }
+	//constructor() {
+  	//super();
+  //}
   
   list(data) {
   	const children = (items) => {
