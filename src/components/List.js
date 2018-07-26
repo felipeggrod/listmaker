@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Item} from './Item';
+import Item from './Item';
 
 
 class List extends React.Component {
@@ -16,7 +16,7 @@ class List extends React.Component {
     }
     
     return data.map((node, index) => {
-      return <Item key={ node.id } name={ node.name }>
+      return <Item key={ node.id } name={ node.name } id={ node.id }>
         { children(node.items) }
       </Item>
     })

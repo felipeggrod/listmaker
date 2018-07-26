@@ -35,7 +35,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <input onChange ={this.onChangeItemList}></input>
+        <input onChange ={this.onChangeList}></input>
       
         <List data = {this.props.list}/>
 

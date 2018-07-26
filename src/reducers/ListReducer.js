@@ -13,9 +13,9 @@ export function listReducer (state = {}, action) {
         state = {...state, name: action.payload}
     }
     if (action.type === "LIST_CHANGE") {
-        state = Object.assign({}, state, {
-            itemList: '1'//action.payload
-        })
+        /*state = Object.assign({}, state, {
+            list: '1'//action.payload
+        })*/
     }
     
     return state;
