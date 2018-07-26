@@ -4,10 +4,7 @@ import Item from './Item';
 
 
 class List extends React.Component {
-	//constructor() {
-  	//super();
-  //}
-  
+
   list(data) {
   	const children = (items) => {
     	if (items) {
@@ -29,13 +26,4 @@ class List extends React.Component {
   }
 }
 
-
-/*const mapStateToProps = (state) => {
-    return {
-        list: state.list
-    };
-}
-
-export default connect(mapStateToProps, undefined)(List);
-*/
 export default List;
