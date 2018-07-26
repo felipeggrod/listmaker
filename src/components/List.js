@@ -1,16 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Item} from './Item';
 
-
-
-class Item extends React.Component {
-	render() {
-  	return <li>
-      	{ this.props.name }
-        { this.props.children }
-    </li>
-  }
-}
 
 class List extends React.Component {
 	constructor() {
@@ -39,27 +30,12 @@ class List extends React.Component {
 }
 
 
-
-
-
-
-
-const ItemList = (props) => {
-    
-    console.log(props.itemList);
-    return (
-        <div> a:
-            <List data={props.itemList}/>
-        </div>
-        
-    );
-}
-
-
-const mapStateToProps = (state) => {
+/*const mapStateToProps = (state) => {
     return {
-        itemList: state.itemList
+        list: state.list
     };
 }
 
-export default connect(mapStateToProps, undefined)(ItemList);
+export default connect(mapStateToProps, undefined)(List);
+*/
+export default List;

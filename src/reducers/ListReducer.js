@@ -1,4 +1,4 @@
-export function itemListReducer (state = {}, action) {
+export function listReducer (state = {}, action) {
     if (action.type === "INC") {
         state = Object.assign({}, state, {
             number: state.number + action.payload

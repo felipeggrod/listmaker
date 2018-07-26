@@ -8,11 +8,11 @@ import { compose, combineReducers, createStore } from 'redux';
 
 //provider to give access to the store, to every container component, without passing it explicitly
 import {Provider} from 'react-redux';
-import {itemListReducer} from './reducers/ItemListReducer';
+import {listReducer} from './reducers/ListReducer';
 
 const allReducers = combineReducers({
     root: (state = {}) => state, //initialize the root field
-    itemList: itemListReducer
+    list: listReducer
 });
 
 
@@ -26,7 +26,7 @@ const allStoreEnhancers = compose (
 const store = createStore(
     allReducers, {
         root: '',
-        itemList: [{
+        list: [{
             "id": 1,
             "name": "Descr",
             "items": [
