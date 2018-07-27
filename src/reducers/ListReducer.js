@@ -62,7 +62,7 @@ export function listReducer (state = {}, action) {
        
     }
 
-    if (action.type === "ITEM_DELETE") {
+    /*if (action.type === "ITEM_DELETE") { //delete items
         var object = JSON.parse(JSON.stringify(state));
 
         function recursiveSearch(obj, id)
@@ -76,6 +76,41 @@ export function listReducer (state = {}, action) {
                         delete obj.items;
                         return;
                     }
+                    if ('object' === typeof(obj[key]))
+                    {
+                        recursiveSearch(obj[key], id);
+                    }
+                }
+            }
+        }
+        recursiveSearch(object, action.payload.id);
+        
+        state = object;
+       
+    }*/
+
+    if (action.type === "ITEM_DELETE") { //delete items from a child object
+        var object = JSON.parse(JSON.stringify(state));
+
+        console.log('______________')
+
+        function recursiveSearch(obj, id)
+        {
+            for (var key in obj)
+            {   
+                if (obj[key].hasOwnProperty("items")) {
+
+                    for (var index in obj[key].items) {
+                        console.log(obj[key].items[index].name);
+                        
+                        if (obj[key].items[index].id == id){
+                            console.log('delete: ' + obj[key].items[index].name);
+                            obj[key].items.splice(index, 1);
+                            return;
+                        }
+                    }  
+                }
+                if (obj.hasOwnProperty(key)) {
                     if ('object' === typeof(obj[key]))
                     {
                         recursiveSearch(obj[key], id);

@@ -28,7 +28,7 @@ const store = createStore(
         root: '',
         list: [{
             "id": 0,
-            "name": "Descr",
+            "name": "List",
             "items": [
                 {
                 "id": 2, 
@@ -42,7 +42,7 @@ const store = createStore(
                 },
                 {
                 "id": 3,
-                "name": "Sub Descr"
+                "name": "Sub Descr2"
                 }
             ]},{
                 "id": 6,
