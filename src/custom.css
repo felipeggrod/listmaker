@@ -2,3 +2,15 @@
     outline: 0px;
     font-size: 1.25em;
 }
+
+.dropdown:hover>.dropdown-menu {
+    display: block;
+    margin: 0;
+    padding: 4;
+}
+
+
+
+.dropdown>.dropdown-toggle:active {
+    pointer-events: none;  
+}
