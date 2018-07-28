@@ -31,14 +31,14 @@ class Item extends React.Component {
         return <div>
             <div className='row'>
                 <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-bottom' 
-                    style={{height: '1.3em', width: '1.3em'}}
+                    style={{height: '1.25em', width: '1.25em'}}
                     onClick={(e) => this.onAddItem(this.props.id, e)}
                 >
                     <h6>+</h6>
                 </button>
                 
                 <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-middle' 
-                    style={{height: '1.3em', width: '1.3em'}}
+                    style={{height: '1.25em', width: '1.25em'}}
                     onClick={(e) => this.onDeleteItem(this.props.id, e)}
                 >
                 <h6>-</h6>
