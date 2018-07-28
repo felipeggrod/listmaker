@@ -90,6 +90,7 @@ export function listReducer (state = {}, action) {
     }*/
 
     if (action.type === "ITEM_DELETE") { //delete items from a child object
+        // eslint-disable-next-line
         var object = JSON.parse(JSON.stringify(state));
 
         console.log('______________')
@@ -103,7 +104,7 @@ export function listReducer (state = {}, action) {
                     for (var index in obj[key].items) {
                         console.log(obj[key].items[index].name);
                         
-                        if (obj[key].items[index].id == id){
+                        if (obj[key].items[index].id === id){
                             console.log('delete: ' + obj[key].items[index].name);
                             obj[key].items.splice(index, 1);
                             return;
