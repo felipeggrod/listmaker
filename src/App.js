@@ -37,9 +37,12 @@ class App extends Component {
         </p>
         <input onChange ={this.onChangeItem}></input>
         
-          <div className="col-4 text-left">
-            <List data = {this.props.list}/>
-          </div>
+        
+
+
+        <div className="col-4 text-left">
+          <List data = {this.props.list}/>
+        </div>
         
       </div>
     );
