@@ -30,15 +30,22 @@ class Item extends React.Component {
     render() {
         return <div>
             <div className='row'>
-                <button className='btn-primary rounded' 
-                    style={{height: '2em', width: '2em'}}
+                <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-bottom' 
+                    style={{height: '1.3em', width: '1.3em'}}
                     onClick={(e) => this.onAddItem(this.props.id, e)}
-                >+</button>
-                <button className='btn-primary rounded' 
-                    style={{height: '2em', width: '2em'}}
+                >
+                    <h6>+</h6>
+                </button>
+                
+                <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-middle' 
+                    style={{height: '1.3em', width: '1.3em'}}
                     onClick={(e) => this.onDeleteItem(this.props.id, e)}
-                >-</button>
+                >
+                <h6>-</h6>
+                </button>
+                <div>&ensp;</div>
                 <ContentEditable
+                    style={{outline: '0', fontSize: '1.25em'}}
                     html= { this.props.name } // innerHTML of the editable div
                     disabled={false}       // use true to disable edition
                     onChange={(e) => this.onChangeItem(this.props.id , e)} // handle innerHTML change
