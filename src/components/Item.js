@@ -30,33 +30,19 @@ class Item extends React.Component {
     render() {
         return <div>
             <div className='row'>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle border-0 my-1 p-0 rounded-circle" 
-                        type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        style={{height: '1.25em', width: '1.25em'}}
-                    >
-                        
-                    </button>
-                    
-                    <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-                        <button className='dropdown-item' 
-                            onClick={(e) => this.onAddItem(this.props.id, e)}
-                        >
-                            Add Item
-                        </button>
-
-                        <button className='dropdown-item' 
-                            onClick={(e) => this.onDeleteItem(this.props.id, e)}
-                        >
-                            Delete Item
-                        </button>
-                        
-                        
-                    </div>
-                </div>
-
+                <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-bottom' 
+                    style={{height: '1.25em', width: '1.25em'}}
+                    onClick={(e) => this.onAddItem(this.props.id, e)}
+                >
+                    <h6>+</h6>
+                </button>
                 
-                
+                <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-middle' 
+                    style={{height: '1.25em', width: '1.25em'}}
+                    onClick={(e) => this.onDeleteItem(this.props.id, e)}
+                >
+                <h6>-</h6>
+                </button>
                 <div>&ensp;</div>
                 <ContentEditable
                     className='contentEditable'
