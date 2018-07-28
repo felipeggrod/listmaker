@@ -30,26 +30,37 @@ const store = createStore(
         list: [{
             "id": 0,
             "name": "List",
+            "collapsed": false,
+            "completed": false,
             "items": [
                 {
                 "id": 2, 
                 "name": "Sub Descr",
+                "collapsed": false,
+                "completed": false,
                 "items": [
                     {
                     "id": 5, 
-                    "name": "Sub Sub Descr"
+                    "name": "Sub Sub Descr",
+                    "collapsed": false,
+                    "completed": false
                     }
                 ]
                 },
                 {
                 "id": 3,
-                "name": "Sub Descr2"
-                }
-            ]},{
+                "name": "Sub Descr2",
+                "collapsed": false,
+                "completed": false
+                },
+                {
                 "id": 6,
-                "name": "Descre"
-            }
-        ]
+                "name": "Descre",
+                "collapsed": false,
+                "completed": false
+                }
+            ]
+        }]
     },
     allStoreEnhancers
 );

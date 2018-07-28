@@ -12,7 +12,7 @@ class List extends React.Component {
     }
     
     return data.map((node, index) => {
-      return <Item key={ node.id } name={ node.name } id={ node.id }>
+      return <Item key={ node.id } name={ node.name } id={ node.id } collapsed={node.collapsed} completed={node.completed}>
         { children(node.items) }
       </Item>
     })

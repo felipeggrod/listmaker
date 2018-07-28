@@ -27,3 +27,13 @@ export function DeleteItem (id, newItem) {
         }
     }
 }
+
+export function ToggleCollapseItem (id, newItem) {
+    return {
+        type: "ITEM_COLLAPSE_TOGGLE",
+        payload: {
+            item: newItem,
+            id: id
+        }
+    }
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import ContentEditable from 'react-contenteditable'
 import {connect} from 'react-redux';
-import {ChangeItem} from '../actions/ListActions';
+import {ChangeItem, ToggleCollapseItem} from '../actions/ListActions';
 import {AddItem} from '../actions/ListActions';
 import {DeleteItem} from '../actions/ListActions';
 
@@ -27,6 +27,10 @@ class Item extends React.Component {
         this.props.onDeleteItem(id, e.target.value);
     };
 
+    onToggleCollapseItem = (id, e) => {
+        this.props.onToggleCollapseItem(id, e.target.value);
+    };
+
     render() {
         return <div>
             <div className='row'>
@@ -43,6 +47,14 @@ class Item extends React.Component {
                 >
                 <h6>-</h6>
                 </button>
+                
+                <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-middle' 
+                    style={{height: '1.25em', width: '1.25em'}}
+                    onClick={(e) => this.onToggleCollapseItem(this.props.id, e)}
+                >
+                <h6>c</h6>
+                </button>
+
                 <div>&ensp;</div>
                 <ContentEditable
                     className='contentEditable'
@@ -51,7 +63,12 @@ class Item extends React.Component {
                     onChange={(e) => this.onChangeItem(this.props.id , e)} // handle innerHTML change
                 />
             </div>  
-            { this.props.children }
+            
+            {(() => {//Collapsable children
+                if (this.props.collapsed === false ) {
+                    return this.props.children;
+                }
+            })()}
         </div>
   }
 }
@@ -59,7 +76,8 @@ class Item extends React.Component {
 const mapActionsToProps = {
     onChangeItem: ChangeItem,
     onAddItem: AddItem,
-    onDeleteItem: DeleteItem
+    onDeleteItem: DeleteItem,
+    onToggleCollapseItem: ToggleCollapseItem
 };
 
 

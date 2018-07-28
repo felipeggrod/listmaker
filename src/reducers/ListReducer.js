@@ -43,9 +43,9 @@ export function listReducer (state = {}, action) {
                     if ( obj.id === id) {
                         console.dir(obj);
                         if (obj.items) {
-                            obj.items.push({'id': Math.random(), 'name':'new'});
+                            obj.items.push({'id': Math.random(), 'name':'new', "collapsed": false, "completed": false});
                         }else{
-                            obj.items = [{'id': Math.random(), 'name':'new'}];
+                            obj.items = [{'id': Math.random(), 'name':'new', "collapsed": false, "completed": false}];
                         }
                         return;
                     }
@@ -61,33 +61,6 @@ export function listReducer (state = {}, action) {
         state = object;
        
     }
-
-    /*if (action.type === "ITEM_DELETE") { //delete items
-        var object = JSON.parse(JSON.stringify(state));
-
-        function recursiveSearch(obj, id)
-        {
-            for (var key in obj)
-            {
-                if (obj.hasOwnProperty(key))
-                {
-                    if ( obj.id === id) {
-                        console.dir(obj);
-                        delete obj.items;
-                        return;
-                    }
-                    if ('object' === typeof(obj[key]))
-                    {
-                        recursiveSearch(obj[key], id);
-                    }
-                }
-            }
-        }
-        recursiveSearch(object, action.payload.id);
-        
-        state = object;
-       
-    }*/
 
     if (action.type === "ITEM_DELETE") { //delete items from a child object
         // eslint-disable-next-line
@@ -122,6 +95,34 @@ export function listReducer (state = {}, action) {
         recursiveSearch(object, action.payload.id);
         
         state = object;
+       
+    }
+
+    if (action.type === "ITEM_COLLAPSE_TOGGLE") {
+        // eslint-disable-next-line
+        var obj = JSON.parse(JSON.stringify(state));
+
+        function recursiveSearch(obj, id)
+        {
+            for (var key in obj)
+            {
+                if (obj.hasOwnProperty(key))
+                {
+                    if ( obj.id === id) {
+                        //console.log(obj.name);
+                        obj.collapsed = !obj.collapsed;
+                        return;
+                    }
+                    if ('object' === typeof(obj[key]))
+                    {
+                        recursiveSearch(obj[key], id);
+                    }
+                }
+            }
+        }
+        recursiveSearch(obj, action.payload.id);
+        
+        state = obj;
        
     }
 
