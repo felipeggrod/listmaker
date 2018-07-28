@@ -45,7 +45,7 @@ class Item extends React.Component {
                 </button>
                 <div>&ensp;</div>
                 <ContentEditable
-                    style={{outline: '0', fontSize: '1.25em'}}
+                    className='contentEditable'
                     html= { this.props.name } // innerHTML of the editable div
                     disabled={false}       // use true to disable edition
                     onChange={(e) => this.onChangeItem(this.props.id , e)} // handle innerHTML change
