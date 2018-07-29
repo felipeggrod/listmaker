@@ -39,33 +39,35 @@ class Item extends React.Component {
     render() {
         return <div>
             <div className='row'>
-                <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-bottom' 
-                    style={{height: '.75em', width: '.75em', }}
-                    onClick={() => this.onAddItem(this.props.id)}
-                >
-                <h6 style={{fontSize: '.75em'}}>+</h6>
-                </button>
-                
-                <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-middle' 
-                    style={{height: '.75em', width: '.75em'}}
-                    onClick={() => this.onDeleteItem(this.props.id)}
-                >
-                <h6 style={{fontSize: '.75em'}} >-</h6>
-                </button>
-                
-                <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-middle' 
-                    style={{height: '.75em', width: '.75em'}}
-                    onClick={() => this.onToggleCollapseItem(this.props.id)}
-                >
-                <h6 style={{fontSize: '.75em'}}>c</h6>
-                </button>
+                <div >
+                    <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-bottom' 
+                        style={{height: '.75em', width: '.75em', }}
+                        onClick={() => this.onAddItem(this.props.id)}
+                    >
+                    <h6 style={{fontSize: '.6em'}}>+</h6>
+                    </button>
+                    
+                    <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-middle' 
+                        style={{height: '.75em', width: '.75em'}}
+                        onClick={() => this.onDeleteItem(this.props.id)}
+                    >
+                    <h6 style={{fontSize: '.6em'}} >-</h6>
+                    </button>
+                    
+                    <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-middle' 
+                        style={{height: '.75em', width: '.75em'}}
+                        onClick={() => this.onToggleCollapseItem(this.props.id)}
+                    >
+                    <h6 style={{fontSize: '0.6em'}}>c</h6>
+                    </button>
 
-                <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-middle' 
-                    style={{height: '.75em', width: '.75em'}}
-                    onClick={() => this.onStrikethroughItem(this.props.id)}
-                >
-                <h6 style={{fontSize: '.75em'}}>s</h6>
-                </button>
+                    <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-middle' 
+                        style={{height: '.75em', width: '.75em'}}
+                        onClick={() => this.onStrikethroughItem(this.props.id)}
+                    >
+                    <h6 style={{fontSize: '.6em'}}>s</h6>
+                    </button>
+                </div>
 
                 <div>&ensp;</div>
                 <ContentEditable
