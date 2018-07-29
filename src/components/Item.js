@@ -1,7 +1,7 @@
 import React from 'react';
 import ContentEditable from 'react-contenteditable'
 import {connect} from 'react-redux';
-import {ChangeItem, ToggleCollapseItem} from '../actions/ListActions';
+import {ChangeItem, ToggleCollapseItem, StrikethroughItem} from '../actions/ListActions';
 import {AddItem} from '../actions/ListActions';
 import {DeleteItem} from '../actions/ListActions';
 
@@ -11,6 +11,7 @@ class Item extends React.Component {
         this.onChangeItem = this.onChangeItem.bind(this);
         this.onAddItem = this.onAddItem.bind(this);
         this.onDeleteItem = this.onDeleteItem.bind(this);
+        this.onStrikethroughItem = this.onStrikethroughItem.bind(this);
     };
     
     
@@ -31,32 +32,44 @@ class Item extends React.Component {
         this.props.onToggleCollapseItem(id, e.target.value);
     };
 
+    onStrikethroughItem = (id, e) => {
+        this.props.onStrikethroughItem(id, e.target.value);
+    };
+
     render() {
         return <div>
             <div className='row'>
                 <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-bottom' 
-                    style={{height: '1.25em', width: '1.25em'}}
+                    style={{height: '.75em', width: '.75em', }}
                     onClick={(e) => this.onAddItem(this.props.id, e)}
                 >
-                    <h6>+</h6>
+                <h6 style={{fontSize: '.75em'}}>+</h6>
                 </button>
                 
                 <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-middle' 
-                    style={{height: '1.25em', width: '1.25em'}}
+                    style={{height: '.75em', width: '.75em'}}
                     onClick={(e) => this.onDeleteItem(this.props.id, e)}
                 >
-                <h6>-</h6>
+                <h6 style={{fontSize: '.75em'}} >-</h6>
                 </button>
                 
                 <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-middle' 
-                    style={{height: '1.25em', width: '1.25em'}}
+                    style={{height: '.75em', width: '.75em'}}
                     onClick={(e) => this.onToggleCollapseItem(this.props.id, e)}
                 >
-                <h6>c</h6>
+                <h6 style={{fontSize: '.75em'}}>c</h6>
+                </button>
+
+                <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-middle' 
+                    style={{height: '.75em', width: '.75em'}}
+                    onClick={(e) => this.onStrikethroughItem(this.props.id, e)}
+                >
+                <h6 style={{fontSize: '.75em'}}>s</h6>
                 </button>
 
                 <div>&ensp;</div>
                 <ContentEditable
+                    tagName={ this.props.completed? 's' : ''}
                     className='contentEditable'
                     html= { this.props.name } // innerHTML of the editable div
                     disabled={false}       // use true to disable edition
@@ -77,7 +90,8 @@ const mapActionsToProps = {
     onChangeItem: ChangeItem,
     onAddItem: AddItem,
     onDeleteItem: DeleteItem,
-    onToggleCollapseItem: ToggleCollapseItem
+    onToggleCollapseItem: ToggleCollapseItem,
+    onStrikethroughItem: StrikethroughItem
 };
 
 

@@ -37,3 +37,13 @@ export function ToggleCollapseItem (id, newItem) {
         }
     }
 }
+
+export function StrikethroughItem (id, newItem) {
+    return {
+        type: "ITEM_STRIKETHROUGH",
+        payload: {
+            item: newItem,
+            id: id
+        }
+    }
+}

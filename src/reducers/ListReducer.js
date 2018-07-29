@@ -125,6 +125,33 @@ export function listReducer (state = {}, action) {
         state = obj;
        
     }
+    if (action.type === "ITEM_STRIKETHROUGH") {
+        // eslint-disable-next-line
+        var obj = JSON.parse(JSON.stringify(state));
+
+        function recursiveSearch(obj, id)
+        {
+            for (var key in obj)
+            {
+                if (obj.hasOwnProperty(key))
+                {
+                    if ( obj.id === id) {
+                        //console.log(obj.name);
+                        obj.completed = !obj.completed;
+                        return;
+                    }
+                    if ('object' === typeof(obj[key]))
+                    {
+                        recursiveSearch(obj[key], id);
+                    }
+                }
+            }
+        }
+        recursiveSearch(obj, action.payload.id);
+        
+        state = obj;
+       
+    }
 
     
     return state;
