@@ -9,6 +9,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {ChangeItem} from './actions/ListActions';
 import List from './components/List';
+import Navbar from './components/Navbar';
 
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <Navbar/>
         
         <div className="col-4 text-left">
           <List data = {this.props.list}/>
