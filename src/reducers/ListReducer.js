@@ -8,19 +8,15 @@ export function listReducer (state = {}, action) {
     if (action.type === "ITEM_CHANGE") {
         var obj = JSON.parse(JSON.stringify(state));
 
-        function recursiveSearch(obj, id)
-        {
-            for (var key in obj)
-            {
-                if (obj.hasOwnProperty(key))
-                {
+        function recursiveSearch(obj, id){
+            for (var key in obj){
+                if (obj.hasOwnProperty(key)){
                     if ( obj.id === id) {
                         //console.log(obj.name);
                         obj.name = action.payload.item;
                         return;
                     }
-                    if ('object' === typeof(obj[key]))
-                    {
+                    if ('object' === typeof(obj[key])){
                         recursiveSearch(obj[key], id);
                     }
                 }
@@ -34,12 +30,9 @@ export function listReducer (state = {}, action) {
     if (action.type === "ITEM_ADD") {
         var object = JSON.parse(JSON.stringify(state));
 
-        function recursiveSearch(obj, id)
-        {
-            for (var key in obj)
-            {
-                if (obj.hasOwnProperty(key))
-                {
+        function recursiveSearch(obj, id){
+            for (var key in obj){
+                if (obj.hasOwnProperty(key)){
                     if ( obj.id === id) {
                         console.dir(obj);
                         if (obj.items) {
@@ -49,8 +42,7 @@ export function listReducer (state = {}, action) {
                         }
                         return;
                     }
-                    if ('object' === typeof(obj[key]))
-                    {
+                    if ('object' === typeof(obj[key])){
                         recursiveSearch(obj[key], id);
                     }
                 }
@@ -66,17 +58,11 @@ export function listReducer (state = {}, action) {
         // eslint-disable-next-line
         var object = JSON.parse(JSON.stringify(state));
 
-        console.log('______________')
-
-        function recursiveSearch(obj, id)
-        {
-            for (var key in obj)
-            {   
+        function recursiveSearch(obj, id){
+            for (var key in obj){   
                 if (obj[key].hasOwnProperty("items")) {
-
                     for (var index in obj[key].items) {
-                        console.log(obj[key].items[index].name);
-                        
+                        //console.log(obj[key].items[index].name);
                         if (obj[key].items[index].id === id){
                             console.log('delete: ' + obj[key].items[index].name);
                             obj[key].items.splice(index, 1);
@@ -85,8 +71,7 @@ export function listReducer (state = {}, action) {
                     }  
                 }
                 if (obj.hasOwnProperty(key)) {
-                    if ('object' === typeof(obj[key]))
-                    {
+                    if ('object' === typeof(obj[key])){
                         recursiveSearch(obj[key], id);
                     }
                 }
@@ -102,19 +87,15 @@ export function listReducer (state = {}, action) {
         // eslint-disable-next-line
         var obj = JSON.parse(JSON.stringify(state));
 
-        function recursiveSearch(obj, id)
-        {
-            for (var key in obj)
-            {
-                if (obj.hasOwnProperty(key))
-                {
+        function recursiveSearch(obj, id){
+            for (var key in obj){
+                if (obj.hasOwnProperty(key)){
                     if ( obj.id === id) {
                         //console.log(obj.name);
                         obj.collapsed = !obj.collapsed;
                         return;
                     }
-                    if ('object' === typeof(obj[key]))
-                    {
+                    if ('object' === typeof(obj[key])){
                         recursiveSearch(obj[key], id);
                     }
                 }
@@ -129,19 +110,30 @@ export function listReducer (state = {}, action) {
         // eslint-disable-next-line
         var obj = JSON.parse(JSON.stringify(state));
 
-        function recursiveSearch(obj, id)
-        {
-            for (var key in obj)
-            {
-                if (obj.hasOwnProperty(key))
-                {
+        function recursiveStrikethrough(obj, completed) { //go down on object tree and assign their completed fields in to the completed variable value
+            for (var key in obj){
+                if (obj.hasOwnProperty(key)){
+                    console.log(obj.name);
+                    obj.completed = completed;
+                    if ('object' === typeof(obj[key])){
+                        recursiveStrikethrough(obj[key], completed);
+                    }
+                }
+            }
+        }
+
+        function recursiveSearch(obj, id){
+            for (var key in obj){
+                if (obj.hasOwnProperty(key)){
                     if ( obj.id === id) {
-                        //console.log(obj.name);
+                        console.log(obj.name);
                         obj.completed = !obj.completed;
+                        
+                        recursiveStrikethrough(obj.items, obj.completed);
+                        
                         return;
                     }
-                    if ('object' === typeof(obj[key]))
-                    {
+                    if ('object' === typeof(obj[key])){
                         recursiveSearch(obj[key], id);
                     }
                 }
