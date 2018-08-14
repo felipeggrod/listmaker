@@ -42,9 +42,14 @@ class Item extends React.Component {
         }
     };
 
+    componentDidMount() {
+        ReactDOM.findDOMNode(this.refs['0']).focus();
+    }
+
     
 
     render() {
+        //console.log(this.props.id);
         return <div>
             
             <div className='row '>
@@ -82,7 +87,7 @@ class Item extends React.Component {
                 
                 <div onFocus={() => console.log('ONFOCUS')} onBlur={() => console.log('ONBLUR')} onKeyPress = {(e) => this.onAddItemSameLevel(this.props.id, e)}>
                     <ContentEditable
-                       
+                        ref={'0'}
                         tagName={ this.props.completed? 's' : ''}
                         onFocus={() => console.log('ONFOCUS inside')}
                         className='contentEditable'
