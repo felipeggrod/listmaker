@@ -1,9 +1,9 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import ContentEditable from 'react-contenteditable'
 import {connect} from 'react-redux';
-import {ChangeItem, ToggleCollapseItem, StrikethroughItem} from '../actions/ListActions';
-import {AddItem} from '../actions/ListActions';
-import {DeleteItem} from '../actions/ListActions';
+import {AddItem, DeleteItem, ChangeItem, ToggleCollapseItem, StrikethroughItem, AddItemSameLevel} from '../actions/ListActions';
+
 
 class Item extends React.Component {
     constructor() {
@@ -36,9 +36,18 @@ class Item extends React.Component {
         this.props.onStrikethroughItem(id);
     };
 
+    onAddItemSameLevel = (id, e) => {
+        if (e.key === 'Enter') {
+           this.props.onAddItemSameLevel(id);
+        }
+    };
+
+    
+
     render() {
         return <div>
-            <div className='row'>
+            
+            <div className='row '>
                 <div >
                     <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-bottom' 
                         style={{height: '.75em', width: '.75em', }}
@@ -69,14 +78,20 @@ class Item extends React.Component {
                     </button>
                 </div>
 
-                <div>&ensp;</div>
-                <ContentEditable
-                    tagName={ this.props.completed? 's' : ''}
-                    className='contentEditable'
-                    html= { this.props.name } // innerHTML of the editable div
-                    disabled={false}       // use true to disable edition
-                    onChange={(e) => this.onChangeItem(this.props.id , e)} // handle innerHTML change
-                />
+                <div >&ensp;</div>
+                
+                <div onFocus={() => console.log('ONFOCUS')} onBlur={() => console.log('ONBLUR')} onKeyPress = {(e) => this.onAddItemSameLevel(this.props.id, e)}>
+                    <ContentEditable
+                       
+                        tagName={ this.props.completed? 's' : ''}
+                        onFocus={() => console.log('ONFOCUS inside')}
+                        className='contentEditable'
+                        html= { this.props.name } // innerHTML of the editable div
+                        disabled={false}       // use true to disable edition
+                        onChange={(e) => this.onChangeItem(this.props.id , e)} // handle innerHTML change
+                    />
+                    
+                </div>
             </div>  
             
             {(() => {//Collapsable children
@@ -93,7 +108,8 @@ const mapActionsToProps = {
     onAddItem: AddItem,
     onDeleteItem: DeleteItem,
     onToggleCollapseItem: ToggleCollapseItem,
-    onStrikethroughItem: StrikethroughItem
+    onStrikethroughItem: StrikethroughItem,
+    onAddItemSameLevel: AddItemSameLevel
 };
 
 
