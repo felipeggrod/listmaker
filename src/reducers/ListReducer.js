@@ -34,11 +34,11 @@ export function listReducer (state = {}, action) {
             for (var key in obj){
                 if (obj.hasOwnProperty(key)){
                     if ( obj.id === id) {
-                        console.dir(obj);
+                        //console.dir(obj);
                         if (obj.items) {
-                            obj.items.push({'id': Math.random(), 'name':'new', "collapsed": false, "completed": false});
+                            obj.items.push({'id': Math.random(), 'name':'New', "collapsed": false, "completed": false});
                         }else{
-                            obj.items = [{'id': Math.random(), 'name':'new', "collapsed": false, "completed": false}];
+                            obj.items = [{'id': Math.random(), 'name':'New', "collapsed": false, "completed": false}];
                         }
                         return;
                     }
@@ -64,7 +64,7 @@ export function listReducer (state = {}, action) {
                     for (var index in obj[key].items) {
                         //console.log(obj[key].items[index].name);
                         if (obj[key].items[index].id === id){
-                            console.log('delete: ' + obj[key].items[index].name);
+                            //console.log('delete: ' + obj[key].items[index].name);
                             obj[key].items.splice(index, 1);
                             return;
                         }
@@ -113,7 +113,7 @@ export function listReducer (state = {}, action) {
         function recursiveStrikethrough(obj, completed) { //go down on object tree and assign their completed fields in to the completed variable value
             for (var key in obj){
                 if (obj.hasOwnProperty(key)){
-                    console.log(obj.name);
+                    //console.log(obj.name);
                     obj.completed = completed;
                     if ('object' === typeof(obj[key])){
                         recursiveStrikethrough(obj[key], completed);
@@ -126,7 +126,7 @@ export function listReducer (state = {}, action) {
             for (var key in obj){
                 if (obj.hasOwnProperty(key)){
                     if ( obj.id === id) {
-                        console.log(obj.name);
+                        //console.log(obj.name);
                         obj.completed = !obj.completed;
                         
                         recursiveStrikethrough(obj.items, obj.completed);
@@ -142,6 +142,54 @@ export function listReducer (state = {}, action) {
         recursiveSearch(obj, action.payload.id);
         
         state = obj;
+       
+    }
+
+    if (action.type === "ITEM_ADD_SAME_LEVEL") {
+        // eslint-disable-next-line
+        var object = JSON.parse(JSON.stringify(state));
+
+        /*function recursiveSearch(obj, id){
+            for (var key in obj){
+                if (obj.hasOwnProperty(key)){
+                    if ( obj.id === id) {
+                        console.dir(obj);
+                        if (obj.items) {
+                            obj.items.push({'id': Math.random(), 'name':'New', "collapsed": false, "completed": false});
+                        }else{
+                            obj.items = [{'id': Math.random(), 'name':'New', "collapsed": false, "completed": false}];
+                        }
+                        return;
+                    }
+                    if ('object' === typeof(obj[key])){
+                        recursiveSearch(obj[key], id);
+                    }
+                }
+            }
+        }*/
+        function recursiveSearch(obj, id){
+            for (var key in obj){   
+                if (obj[key].hasOwnProperty("items")) {
+                    for (var index in obj[key].items) {
+                        //console.log(obj[key].items[index].name);
+                        if (obj[key].items[index].id === id){
+                            
+                            obj[key].items.push({'id': Math.random(), 'name':'New', "collapsed": false, "completed": false});
+                            return;
+                        }
+                    }  
+                }
+                if (obj.hasOwnProperty(key)) {
+                    if ('object' === typeof(obj[key])){
+                        recursiveSearch(obj[key], id);
+                    }
+                }
+            }
+        }
+
+        recursiveSearch(object, action.payload.id);
+        
+        state = object;
        
     }
 

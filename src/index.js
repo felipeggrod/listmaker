@@ -28,7 +28,7 @@ const store = createStore(
         root: '',
         list: [{
             "id": 0,
-            "name": "List",
+            "name": "Editable List",
             "collapsed": false,
             "completed": false,
             "items": [

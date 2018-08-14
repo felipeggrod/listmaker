@@ -47,3 +47,13 @@ export function StrikethroughItem (id, newItem) {
         }
     }
 }
+
+export function AddItemSameLevel (id, newItem) {
+    return {
+        type: "ITEM_ADD_SAME_LEVEL",
+        payload: {
+            item: newItem,
+            id: id
+        }
+    }
+}
