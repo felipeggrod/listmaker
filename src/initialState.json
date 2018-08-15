@@ -8,13 +8,13 @@
         "items": [
             {
             "id": 2, 
-            "name": "Sub Item",
+            "name": "Sub Descr",
             "collapsed": false,
             "completed": false,
             "items": [
                 {
                 "id": 5, 
-                "name": "Sub Sub Item",
+                "name": "Sub Sub Descr",
                 "collapsed": false,
                 "completed": false
                 }
@@ -22,13 +22,13 @@
             },
             {
             "id": 3,
-            "name": "Sub Item 2",
+            "name": "Sub Descr2",
             "collapsed": false,
             "completed": false
             },
             {
             "id": 6,
-            "name": "Sub Item 3",
+            "name": "Descre",
             "collapsed": false,
             "completed": false
             }
