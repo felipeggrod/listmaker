@@ -37,12 +37,13 @@ class Item extends React.Component {
     };
 
     onAddItemSameLevel = (id, e) => {
-        if (e.key === 'Enter') {
-           this.props.onAddItemSameLevel(id);
+        if (e.key === 'Enter') { //prevents adding a <br> and calls the action
+            e.preventDefault();
+            this.props.onAddItemSameLevel(id);
         }
     };
 
-    componentDidMount() {
+    componentDidMount() { //focus on newly created editable content
         ReactDOM.findDOMNode(this.refs['0']).focus();
     }
 
@@ -87,13 +88,15 @@ class Item extends React.Component {
                 
                 <div onFocus={() => console.log('ONFOCUS')} onBlur={() => console.log('ONBLUR')} onKeyPress = {(e) => this.onAddItemSameLevel(this.props.id, e)}>
                     <ContentEditable
-                        ref={'0'}
+                        
+                        
                         tagName={ this.props.completed? 's' : ''}
                         onFocus={() => console.log('ONFOCUS inside')}
                         className='contentEditable'
                         html= { this.props.name } // innerHTML of the editable div
                         disabled={false}       // use true to disable edition
                         onChange={(e) => this.onChangeItem(this.props.id , e)} // handle innerHTML change
+                        ref={'0'}
                     />
                     
                 </div>
