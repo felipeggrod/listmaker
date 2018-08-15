@@ -34,7 +34,7 @@ class App extends Component {
       <div className="App">
         <Navbar reset = {this.props.onReset}/>
         
-        <div className="col-4 text-left">
+        <div className="col-12 text-left">
           <List data = {this.props.list}/>
         </div>
         

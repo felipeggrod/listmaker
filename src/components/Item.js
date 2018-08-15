@@ -51,7 +51,10 @@ class Item extends React.Component {
             this.props.onAddItem(id);
         }
         
-    };
+    }
+
+
+
 
     componentDidMount() { //focus on newly created editable content
         ReactDOM.findDOMNode(this.refs['0']).focus();
@@ -63,7 +66,7 @@ class Item extends React.Component {
         //console.log(this.props.id);
         return <div>
             
-            <div className='row '>
+            <div id="fadeIn" className='row'>
                 <div >
                     <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-bottom' 
                         style={{height: '.75em', width: '.75em', }}
@@ -98,8 +101,6 @@ class Item extends React.Component {
                 
                 <div /*onFocus={() => console.log('ONFOCUS')} onBlur={() => console.log('ONBLUR')}*/ onKeyDown = {(e) => this.onAddItemSameLevel(this.props.id, e)}>
                     <ContentEditable
-                        
-                        
                         tagName={ this.props.completed? 's' : ''}
                         //onFocus={() => console.log('ONFOCUS inside')}
                         className='contentEditable'
