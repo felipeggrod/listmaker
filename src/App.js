@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 //generate container components with connect() instead of store.subscribe(), to use optmizations made for react-redux 
 //Connects a React component to a Redux store.
 import {connect} from 'react-redux';
-import {ChangeItem} from './actions/ListActions';
+import {ChangeItem, Reset} from './actions/ListActions';
 import List from './components/List';
 import Navbar from './components/Navbar';
 
@@ -17,17 +17,22 @@ class App extends Component {
     super(props);
 
     this.onChangeItem = this.onChangeItem.bind(this);
+    this.onReset = this.onReset.bind(this);
   }
 
   onChangeItem(event) {
     this.props.onChangeItem(event.target.value);
   }
 
+  onReset() {
+    this.props.onReset();
+  }
+
   render() {
 
     return (
       <div className="App">
-        <Navbar/>
+        <Navbar reset = {this.props.onReset}/>
         
         <div className="col-4 text-left">
           <List data = {this.props.list}/>
@@ -44,12 +49,12 @@ class App extends Component {
 const mapStateToProps = (state, props) => {
   return {
     list: state.list
-    
   }
 };
 
 const mapActionsToProps = {
-    onChangeItem: ChangeItem
+  onChangeItem: ChangeItem,
+  onReset: Reset
 };
 
 

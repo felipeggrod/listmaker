@@ -53,5 +53,11 @@ export function AddItemSameLevel (id) {
     }
 }
 
+export function Reset () {
+    return {
+        type: "RESET",
+        payload: {}
+    }
+}
 
 
