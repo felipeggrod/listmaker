@@ -41,6 +41,12 @@ class Item extends React.Component {
             e.preventDefault();
             this.props.onAddItemSameLevel(id);
         }
+        if (e.key === 'Backspace') { 
+            if (e.currentTarget.textContent === '') {
+                this.props.onDeleteItem(id);
+            }
+        }
+        
     };
 
     componentDidMount() { //focus on newly created editable content
@@ -86,12 +92,12 @@ class Item extends React.Component {
 
                 <div >&ensp;</div>
                 
-                <div onFocus={() => console.log('ONFOCUS')} onBlur={() => console.log('ONBLUR')} onKeyPress = {(e) => this.onAddItemSameLevel(this.props.id, e)}>
+                <div /*onFocus={() => console.log('ONFOCUS')} onBlur={() => console.log('ONBLUR')}*/ onKeyDown = {(e) => this.onAddItemSameLevel(this.props.id, e)}>
                     <ContentEditable
                         
                         
                         tagName={ this.props.completed? 's' : ''}
-                        onFocus={() => console.log('ONFOCUS inside')}
+                        //onFocus={() => console.log('ONFOCUS inside')}
                         className='contentEditable'
                         html= { this.props.name } // innerHTML of the editable div
                         disabled={false}       // use true to disable edition
