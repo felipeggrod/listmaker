@@ -10,6 +10,9 @@ import { compose, combineReducers, createStore } from 'redux';
 import {Provider} from 'react-redux';
 import {listReducer} from './reducers/ListReducer';
 
+import jsonData from "./initialState.json";
+var initialState = jsonData;
+
 const allReducers = combineReducers({
     root: (state = {}) => state, //initialize the root field
     list: listReducer
@@ -24,43 +27,8 @@ const allStoreEnhancers = compose (
 
 
 const store = createStore(
-    allReducers, {
-        root: '',
-        list: [{
-            "id": 0,
-            "name": "Editable List",
-            "collapsed": false,
-            "completed": false,
-            "items": [
-                {
-                "id": 2, 
-                "name": "Sub Descr",
-                "collapsed": false,
-                "completed": false,
-                "items": [
-                    {
-                    "id": 5, 
-                    "name": "Sub Sub Descr",
-                    "collapsed": false,
-                    "completed": false
-                    }
-                ]
-                },
-                {
-                "id": 3,
-                "name": "Sub Descr2",
-                "collapsed": false,
-                "completed": false
-                },
-                {
-                "id": 6,
-                "name": "Descre",
-                "collapsed": false,
-                "completed": false
-                }
-            ]
-        }]
-    },
+    allReducers, 
+    initialState,
     allStoreEnhancers
 );
 
