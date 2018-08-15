@@ -1,59 +1,57 @@
-export function ChangeItem (id, newItem) {
+export function ChangeItem (id, item) {
     return {
         type: "ITEM_CHANGE",
         payload: {
-            item: newItem,
+            item: item,
             id: id
         }
     }
 }
 
-export function AddItem (id, newItem) {
+export function AddItem (id) {
     return {
         type: "ITEM_ADD",
         payload: {
-            item: newItem,
             id: id
         }
     }
 }
 
-export function DeleteItem (id, newItem) {
+export function DeleteItem (id) {
     return {
         type: "ITEM_DELETE",
         payload: {
-            item: newItem,
             id: id
         }
     }
 }
 
-export function ToggleCollapseItem (id, newItem) {
+export function ToggleCollapseItem (id) {
     return {
         type: "ITEM_COLLAPSE_TOGGLE",
         payload: {
-            item: newItem,
             id: id
         }
     }
 }
 
-export function StrikethroughItem (id, newItem) {
+export function StrikethroughItem (id) {
     return {
         type: "ITEM_STRIKETHROUGH",
         payload: {
-            item: newItem,
             id: id
         }
     }
 }
 
-export function AddItemSameLevel (id, newItem) {
+export function AddItemSameLevel (id) {
     return {
         type: "ITEM_ADD_SAME_LEVEL",
         payload: {
-            item: newItem,
             id: id
         }
     }
 }
+
+
+
