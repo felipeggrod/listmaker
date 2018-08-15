@@ -41,10 +41,14 @@ class Item extends React.Component {
             e.preventDefault();
             this.props.onAddItemSameLevel(id);
         }
-        if (e.key === 'Backspace') { 
+        if (e.key === 'Backspace') {// deletes item when pressing Backspace on empty item
             if (e.currentTarget.textContent === '') {
                 this.props.onDeleteItem(id);
             }
+        }
+        if (e.key === 'Tab') { // create a child when pressing Tab on item
+            e.preventDefault();
+            this.props.onAddItem(id);
         }
         
     };
