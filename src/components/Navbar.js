@@ -28,12 +28,14 @@ export default class Navbar extends React.Component {
         
           <div className="collapse " id="collapseExample">
             <div className="card card-body mb-3 mx-3">
-              This is ListMaker, your app for creating lists in an easy way.<b>Hotkeys:</b>
+              <p>This is ListMaker, your app for creating lists in an easy way.</p>
+              <b>Hotkeys:</b>
               Enter - Create new item with the same parent as current item<br/>
               Tab   - Create new item as children of current item<br/>
               Backspace - Delete current item, if it is empty<br/>
-              Ctrl-Z    - Undo<br/>
-              Ctrl-Y / Ctrl-Shift-Z - Redo<br/>
+              Ctrl-Z    - Undo text<br/>
+              Ctrl-Y / Ctrl-Shift-Z - Redo text<br/>
+              
             </div>
           </div>
         </div>

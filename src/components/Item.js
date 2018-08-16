@@ -78,7 +78,7 @@ class Item extends React.Component {
                         style={{height: '.75em', width: '.75em'}}
                         onClick={() => this.onToggleCollapseItem(this.props.id)}
                     >
-                    <h6 style={{fontSize: '0.6em'}}>c</h6>
+                    <h6 style={ this.props.collapsed? {fontSize: '0.6em', color: 'black'} : {fontSize: '0.6em'}} >c</h6>
                     </button>
 
                     <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-middle' 
