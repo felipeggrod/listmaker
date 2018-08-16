@@ -17,7 +17,6 @@ class Item extends React.Component {
     
     onChangeItem = (id, e) => {
         this.props.onChangeItem(id, e.target.value);
-        //console.log(e.target.value + '  ' + this.props.id);
     };
 
     onAddItem = (id) => {
@@ -53,19 +52,12 @@ class Item extends React.Component {
         
     }
 
-
-
-
     componentDidMount() { //focus on newly created editable content
         ReactDOM.findDOMNode(this.refs['0']).focus();
     }
 
-    
-
     render() {
-        //console.log(this.props.id);
         return <div>
-            
             <div id="fadeIn" className='row'>
                 <div >
                     <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-bottom' 
@@ -130,8 +122,6 @@ const mapActionsToProps = {
     onStrikethroughItem: StrikethroughItem,
     onAddItemSameLevel: AddItemSameLevel
 };
-
-
 
 export default connect(undefined, mapActionsToProps)(Item);
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import Item from './Item';
 
-
 class List extends React.Component {
 
   list(data) {
@@ -24,6 +23,5 @@ class List extends React.Component {
     </ul>
   }
 }
-
 
 export default List;

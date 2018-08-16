@@ -60,4 +60,11 @@ export function Reset () {
     }
 }
 
+export function Save () {
+    return {
+        type: "SAVE",
+        payload: {}
+    }
+}
+
 
