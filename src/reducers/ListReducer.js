@@ -185,6 +185,7 @@ export function listReducer (state = {}, action) {
     if (action.type === "SAVE") {
         // eslint-disable-next-line
         var object = require('../initialState.json');
+        var object = state
 
         object = JSON.stringify(object);
         localStorage.setItem("list", object);
