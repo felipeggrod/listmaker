@@ -67,4 +67,11 @@ export function Save () {
     }
 }
 
+export function Load () {
+    return {
+        type: "LOAD",
+        payload: {}
+    }
+}
+
 
