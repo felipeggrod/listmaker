@@ -2,6 +2,7 @@
   "name": "myredux",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://aestheticscult.com/listmaker",
   "dependencies": {
     "react": "^16.4.1",
     "react-contenteditable": "^2.1.0",
