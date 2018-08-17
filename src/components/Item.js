@@ -54,10 +54,12 @@ class Item extends React.Component {
 
     componentDidMount() { //focus on newly created editable content
         ReactDOM.findDOMNode(this.refs['0']).focus();
+        (this.props.id === 0)? console.log(false) : document.execCommand('selectAll',false,null);
     }
 
     render() {
         return <div>
+
             <div id="fadeIn" className='row'>
                 <div >
                     <button className='btn-secondary border-0 my-1 p-0 rounded-circle align-bottom' 
@@ -94,7 +96,6 @@ class Item extends React.Component {
                 <div /*onFocus={() => console.log('ONFOCUS')} onBlur={() => console.log('ONBLUR')}*/ onKeyDown = {(e) => this.onAddItemSameLevel(this.props.id, e)}>
                     <ContentEditable
                         tagName={ this.props.completed? 's' : ''}
-                        //onFocus={() => console.log('ONFOCUS inside')}
                         className='contentEditable'
                         html= { this.props.name } // innerHTML of the editable div
                         disabled={false}       // use true to disable edition
